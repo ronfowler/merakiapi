@@ -13,6 +13,7 @@ Starting point:
 Below is how to use the GET Methods / COMMANDS
 -------------------------------------------
 First get your organization(s) id(s)
+
 $org = Get-MerakiOrganizations -apikey PASTE_YOUR_API_KEY
 
 If you have more than one organization you'll want to grab the organizationId from the org you are interested in and run the command again.
@@ -20,26 +21,34 @@ If you have more than one organization you'll want to grab the organizationId fr
 $org = Get-MerakiOrganizations -apikey PASTE_YOUR_API_KEY -organizationId YOUR_ORGANIZATION_ID
 
 #Get your networks:
+
 $networks = $org | Get-MerakiNetworks 
 
 #Get the network you're interested in
+
 $network = $networks | where { $_.name -eq "network_name" }
 
 #Get the devices from that network
+
 $devices = $network | Get-MerakiDevices
 
 #Get just the switches
+
 $switches = $devices | where { $_.model -like "MS*" }
 
 #Get just the access points
+
 $aps = $devices | where { $_.model -like "MR*" }
 
 #Get the switch ports from a switch
+
 $switchPorts = $switches | where { $_.name -eq "YOUR_SWITCH_NAME" } | Get-MerakiSwitchPorts
 
 #You can dump the data at any point to a file
+
 $switches | export-csv -notypeinformation -path c:\somedirectory\somefilename.csv
 
 #Or you can view most of the columns in the PowerShell console
+
 $switches | format-table
 
