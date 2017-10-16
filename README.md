@@ -1,5 +1,5 @@
 # merakiapi
-This is a Powershell wrapper for the Meraki Cloud API
+This is a Powershell wrapper for the Meraki Cloud API.  The functions are designed around using the PowerShell pipeline.
 
 Starting point:
 1)  Enable the Dashboard API access that is listed under organization / settings.
